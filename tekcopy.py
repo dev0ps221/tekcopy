@@ -3,20 +3,29 @@ from sys import argv
 
 filename = (__file__.split('/')[-1])
 argc = len(argv)
+cmdargs = []
 
 def get_args():
-    args = argv
+    args = argv.copy()
     idx = 0
     to_remove = []
     for elem in args:
-        if filename in elem or 'python' in elem : to_remove.append(idx)
+        if idx in ([0,1] if 'python' in str(args) else [0]):
+            if filename in elem or 'python' in elem : to_remove.append(idx)
         idx+=1
     for x in to_remove:
         del(args[x])
     return args
 
-print(get_args())
+cmdargs = get_args()
 
+def missing_arg():
+    print('utilisation : ')
+    print(argv[:-len(cmdargs)])
+
+if cmdargs:
+    if len(cmdargs) < 2:
+        missing_arg()
 def writeTo(file,lines):
     try:
         file.writelines(lines)
