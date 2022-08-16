@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
-
 from sys import argv
+
+filename = (__file__.split('/')[-1])
 argc = len(argv)
-print(argc)
+
+def get_args():
+    args = argv
+    idx = 0
+    to_remove = []
+    for elem in args:
+        if filename in elem or 'python' in elem : to_remove.append(idx)
+        idx+=1
+    for idx in to_remove:
+        del(args[idx])
+    return args
+
+print(get_args())
 
 def writeTo(file,lines):
     try:
