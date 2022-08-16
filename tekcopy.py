@@ -11,8 +11,8 @@ def get_args():
     for elem in args:
         if filename in elem or 'python' in elem : to_remove.append(idx)
         idx+=1
-    for idx in to_remove:
-        del(args[idx])
+    for x in to_remove:
+        del(args[x])
     return args
 
 print(get_args())
