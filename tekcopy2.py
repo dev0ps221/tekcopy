@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 
-from sys import argv
-argc = len(argv)
-print(argc)
-
 def writeTo(file,lines):
     try:
         file.writelines(lines)
@@ -15,12 +11,15 @@ def writeTo(file,lines):
 def readFrom(file):
     return file.readlines()
 
-def tekcopy(src,dst):
+def copy(src,dst):
     srcFile = open(src,'rb')
     dstFile = open(dst,'ab')
     lines = readFrom(srcFile)
     return writeTo(dstFile,lines)
     
+
+
+copy('tekcopy.py','tekcopy2.py') 
 
 
 
